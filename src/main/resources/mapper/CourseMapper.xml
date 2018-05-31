@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manager.dao.CourseMapper">
+
+    <resultMap id="courseinfo" type="course">
+        <id property="id" column="Cno"/>
+        <result property="name" column="Cname"/>
+        <result property="credit" column="Ccredit"/>
+    </resultMap>
+
+    <!-- 1. 获取所有课程信息 -->
+    <select id="getCourseInfo" resultMap="courseinfo">
+        select * from course
+    </select>
+</mapper>

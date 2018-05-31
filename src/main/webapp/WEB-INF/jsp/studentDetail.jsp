@@ -22,6 +22,10 @@
 </head>
 <body>
     <br>
+    <c:if test="${empty student}">
+        <h3 style="color: #ac2925" align="center">没有此学生</h3>
+    </c:if>
+    <c:if test="${!empty student}">
     <div class="col-xs-6 col-md-6 col-center-block">
         <h2 align="center">学生信息</h2>
         <table class="table table-bordered">
@@ -41,14 +45,13 @@
             </tr>
         </table>
     </div>
+    </c:if>
     <br>
     <br>
+    <c:if test="${!empty list}">
     <h2 align="center">成绩信息</h2>
     <div class="col-xs-6 col-md-7 col-center-block">
-        <button type="button" class="btn btn btn-success" onclick="window.location.href='/studentmanager/list'">
-            <span class="glyphicon glyphicon-chevron-left">返回列表</span>
-            <span>-</span>
-        </button>
+
         <br>
         <form name="studentitem" action="" method="get">
         <table class="table table-striped table table-hover table table-bordered">
@@ -65,13 +68,27 @@
                     <td>${studentGrade.course.name}</td>
                     <td>${studentGrade.sc.grade}</td>
                     <td>${studentGrade.course.credit}</td>
-                    <td><button type="button" class="btn btn-danger" id="delete">删除</button> <%--onclick="window.location.href='/manager/deleteStudent/${student.studentNo}'"--%>
-                        <button type="button" class="btn btn-info" <%--onclick="window.location.href='/manager/editStudent?id=${student.studentNo}'"--%>>编辑</button>
+                    <td>
+                        <button type="button" class="btn btn-danger" id="delete"
+                                onclick="window.location.href='/detail/delete?cno=${studentGrade.course.id}&&sno=${student.id}'">删除</button>
+                        <button type="button" class="btn btn-info"
+                                onclick="window.location.href='/detail/edit?' +
+                                        'cno=${studentGrade.course.id}&&sno=${student.id}'">编辑</button>
                     </td>
                 </tr>
             </c:forEach>
         </table>
         </form>
     </div>
+    </c:if>
+    <c:if test="${empty list}">
+        <div class="ss" align="center">
+            <h3 style="color: #ac2925">没有相关课程信息</h3>
+            <button type="button" class="btn btn btn-success" onclick="window.location.href='/studentmanager/list'">
+                <span class="glyphicon glyphicon-chevron-left">返回列表</span>
+                <span>-</span>
+            </button>
+        </div>
+    </c:if>
 </body>
 </html>

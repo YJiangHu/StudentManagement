@@ -22,4 +22,28 @@
         where c.Cno = sc.Cno
         and sc.Sno =#{id}
     </select>
+
+    <!-- 2. 根据学生 id 和 课程 id 获取选课信息 -->
+    <select id="getDetail" resultMap="getDetail">
+        select  c.*, sc.*
+        from sc, course c
+        where c.Cno = sc.Cno
+        and sc.Sno =#{sno}
+        and sc.Cno = #{cno}
+    </select>
+
+    <!-- 3. 根据学生 id 和 课程 id 删除课程信息 -->
+    <delete id="deleteDetail">
+        delete from sc where Cno = #{cno} and Sno = #{sno}
+    </delete>
+
+    <!-- 4. 修改选课信息 -->
+    <update id="updateDetail">
+        update sc set Grade = #{grade} where Sno = #{sno} and Cno = #{cno}
+    </update>
+
+    <!-- 5. 增加选课信息 -->
+    <insert id="insertDetail" parameterType="sC">
+        insert into sc values(#{Sno}, #{Cno}, #{Grade})
+    </insert>
 </mapper>

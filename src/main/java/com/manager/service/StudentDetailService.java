@@ -1,9 +1,20 @@
 package com.manager.service;
 
+import com.manager.domain.SC;
 import com.manager.vo.StudentGrade;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface StudentDetailService {
+    // 1. 根据 id 获取学生选课信息及课程信息
     List<StudentGrade> getStudentDetail(long id);
+    // 2. 根据学生 id 和 课程 id 获取选课信息
+    StudentGrade getDetail(long cno, long sno);
+    // 3. 根据学生 id 和 课程 id 删除选课信息
+    int deleteDetail(long sno, long cno);
+    // 4. 修改选课信息
+    int updateDetail(long cno, long sno, float grade);
+    // 5. 增加选课信息
+    int insertDetail(SC sc);
 }
