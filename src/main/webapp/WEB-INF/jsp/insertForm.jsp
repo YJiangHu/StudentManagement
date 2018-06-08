@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Huyuanjiang
@@ -20,14 +21,14 @@
     </style>
 </head>
 <body>
-<div class="col-xs-6 col-md-4 col-center-block">
-<h2>添加学生信息</h2>
-<br>
-<br>
-    <form class="form-inline" action="/studentmanager/insertStudent" method="post">
+    <div class="col-xs-6 col-md-4 col-center-block">
+    <h2>添加学生信息</h2>
+    <br>
+    <br>
+    <form class="form-inline" action="${path}/studentmanager/insertStudent" method="post">
         <div class="form-group">
             <label for="inputId">学号：</label>
-            <input type="text" class="form-control" id="inputId" name="id">
+            <input type="text" class="form-control" id="inputId" name="id" placeholder="请输入纯数字学号">
             <br>
             <br>
             <label for="inputName">姓名：</label>
@@ -46,7 +47,7 @@
             <br>
             <br>
             <label for="inputPhone">电话：</label>
-            <input type="text" class="form-control" id="inputPhone" name="phone">
+            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入有效纯数字号码">
             <br>
             <br>
             <%--<label>性别</label>
@@ -56,12 +57,20 @@
             <label class="radio-inline">
                 <input type="radio" name="studentSex" id="famale" value="女"> 女
             </label>--%>
-            <div class="col-xs-6 col-md-4 col-center-block">
-            <button type="submit" class="btn btn-success">提交</button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='/studentmanager/list'">
-                取消
-            </button>
-            </div>
+            <p align="center">
+                <button type="submit" class="btn btn-success">提交</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/studentmanager/list'">
+                    取消
+                </button>
+            </p>
+            <c:if test="${!empty msg}">
+                <p style="color: #ff1217">${msg}</p>
+            </c:if>
+            <c:if test="${!empty errormsg}">
+                <c:forEach items="${errormsg}" var="error">
+                    <p style="color: #ac2925">${error}</p>
+                </c:forEach>
+            </c:if>
         </div>
     </form>
 </div>

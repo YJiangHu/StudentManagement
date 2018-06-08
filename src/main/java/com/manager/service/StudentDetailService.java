@@ -1,5 +1,6 @@
 package com.manager.service;
 
+import com.manager.domain.Course;
 import com.manager.domain.SC;
 import com.manager.vo.StudentGrade;
 import org.apache.ibatis.annotations.Param;
@@ -17,4 +18,6 @@ public interface StudentDetailService {
     int updateDetail(long cno, long sno, float grade);
     // 5. 增加选课信息
     int insertDetail(SC sc);
+    // 6. 获取所有课程信息
+    List<Course> getCourseList();
 }

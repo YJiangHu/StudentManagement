@@ -20,4 +20,6 @@ public interface StudentDetailMapper {
     int updateDetail(@Param("cno") long cno, @Param("sno") long sno, @Param("grade") float grade);
     // 5. 增加选课信息
     int insertDetail(SC sc);
+    // 6. 获取所有课程信息
+    List<Course> getCourseList();
 }

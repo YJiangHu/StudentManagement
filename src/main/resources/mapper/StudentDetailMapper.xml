@@ -15,6 +15,12 @@
         </association>
     </resultMap>
 
+    <resultMap id="getCourse" type="course">
+        <id property="id" column="Cno"/>
+        <result property="name" column="Cname"/>
+        <result property="credit" column="Ccredit"/>
+    </resultMap>
+
     <!-- 1. 根据 id 获取学生选课信息，并根据选课信息获取课程信息-->
     <select id="getStudentDetail" parameterType="long" resultMap="getDetail">
         select  c.*, sc.*
@@ -46,4 +52,9 @@
     <insert id="insertDetail" parameterType="sC">
         insert into sc values(#{Sno}, #{Cno}, #{Grade})
     </insert>
+
+    <!-- 6. 获取所有课程信息 -->
+    <select id="getCourseList" resultMap="getCourse">
+        select * from course
+    </select>
 </mapper>

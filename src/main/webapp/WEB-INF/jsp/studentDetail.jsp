@@ -48,43 +48,48 @@
     </c:if>
     <br>
     <br>
+
     <c:if test="${!empty list}">
     <h2 align="center">成绩信息</h2>
     <div class="col-xs-6 col-md-7 col-center-block">
-
         <br>
         <form name="studentitem" action="" method="get">
-        <table class="table table-striped table table-hover table table-bordered">
-            <tr>
-                <th>课程号</th>
-                <th>课程名</th>
-                <th>成绩</th>
-                <th>学分</th>
-                <th>操作</th>
-            </tr>
-            <c:forEach items="${list}" var="studentGrade">
+            <button type="button" class="btn btn btn-success" onclick="window.location.href='${path}/studentmanager/list'">
+                <span class="glyphicon glyphicon-chevron-left">返回列表</span>
+                <span>-</span>
+            </button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/insert?id=${student.id}'">添加</button>
+            <table class="table table-striped table table-hover table table-bordered">
                 <tr>
-                    <td>${studentGrade.course.id}</td>
-                    <td>${studentGrade.course.name}</td>
-                    <td>${studentGrade.sc.grade}</td>
-                    <td>${studentGrade.course.credit}</td>
-                    <td>
-                        <button type="button" class="btn btn-danger" id="delete"
-                                onclick="window.location.href='/detail/delete?cno=${studentGrade.course.id}&&sno=${student.id}'">删除</button>
-                        <button type="button" class="btn btn-info"
-                                onclick="window.location.href='/detail/edit?' +
-                                        'cno=${studentGrade.course.id}&&sno=${student.id}'">编辑</button>
-                    </td>
+                    <th>课程号</th>
+                    <th>课程名</th>
+                    <th>成绩</th>
+                    <th>学分</th>
+                    <th>操作</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${list}" var="studentGrade">
+                    <tr>
+                        <td>${studentGrade.course.id}</td>
+                        <td>${studentGrade.course.name}</td>
+                        <td>${studentGrade.sc.grade}</td>
+                        <td>${studentGrade.course.credit}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" id="delete"
+                                    onclick="window.location.href='${path}/detail/delete?cno=${studentGrade.course.id}&&sno=${student.id}'">删除</button>
+                            <button type="button" class="btn btn-info"
+                                    onclick="window.location.href='${path}/detail/edit?' +
+                                            'cno=${studentGrade.course.id}&&sno=${student.id}'">编辑</button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </form>
     </div>
     </c:if>
     <c:if test="${empty list}">
         <div class="ss" align="center">
             <h3 style="color: #ac2925">没有相关课程信息</h3>
-            <button type="button" class="btn btn btn-success" onclick="window.location.href='/studentmanager/list'">
+            <button type="button" class="btn btn btn-success" onclick="window.location.href='${path}/studentmanager/list?id=${id}'">
                 <span class="glyphicon glyphicon-chevron-left">返回列表</span>
                 <span>-</span>
             </button>

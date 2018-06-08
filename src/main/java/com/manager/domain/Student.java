@@ -2,13 +2,26 @@ package com.manager.domain;
 
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 @Component
 public class Student {
-   private long id;
-   private String name;
-   private char sex;
-   private String clazz;
-   private long phone;
+
+    @NotNull
+    @Min(value = 1, message = "学号格式输入有误！")
+    private long id;
+
+    @NotNull
+    private String name;
+
+    private char sex;
+
+    @NotNull
+    private String clazz;
+
+    @Min(value = 1, message = "电话格式输入有误！")
+    private long phone;
 
     public long getId() {
         return id;

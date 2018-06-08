@@ -24,7 +24,7 @@
     <h2>修改选课信息</h2>
     <br>
     <br>
-    <form class="form-inline" action="/detail/editDetail" method="post">
+    <form class="form-inline" action="${path}/detail/editDetail" method="post">
         <div class="form-group">
             <input type="hidden" name="cno" value="${studentGrade.sc.cno}">
             <input type="hidden" name="sno" value="${studentGrade.sc.sno}">
@@ -34,7 +34,7 @@
             <br>
             <p align="center">
                 <button type="submit" class="btn btn-success">提交</button>
-                &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='/detail/list'">取消</button>
+                &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/list'">取消</button>
             </p>
         </div>
     </form>

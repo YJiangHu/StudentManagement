@@ -26,13 +26,16 @@
     <br>
     <br>
     <div class="col-xs-6 col-md-8 col-center-block">
-        <form class="form-inline" action="/studentmanager/getStudent?id=${id}" method="get">
+        <c:if test="${!empty msg}">
+            <p style="color: #ac2925">${msg}</p>
+        </c:if>
+        <form class="form-inline" action="${path}/studentmanager/getStudent?id=${id}" method="get">
             <div class="form-group">
                 <label for="queryid">学号：</label>
-                <input type="text" class="form-control" id="queryid" name="id">
+                <input type="text" class="form-control" id="queryid" name="id" placeholder="请输入纯数字学号">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
-            &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="window.location.href='/studentmanager/insertForm'">添加</button>
+            &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="window.location.href='${path}/studentmanager/insertForm'">添加</button>
         </form>
 
         <table class="table table-striped table table-hover table table-bordered">
@@ -46,13 +49,13 @@
             </tr>
             <c:forEach items="${pageInfo.list}" var="student">
                 <tr>
-                    <td><a href="/detail/list?id=${student.id}"> ${student.id}</a></td>
+                    <td><a href="${path}/detail/list?id=${student.id}"> ${student.id}</a></td>
                     <td>${student.name}</td>
                     <td>${student.sex}</td>
                     <td>${student.clazz}</td>
                     <td>${student.phone}</td>
-                    <td><button type="button" class="btn btn-danger" id="delete" onclick="window.location.href='/studentmanager/delete?id=${student.id}'">删除</button>
-                        <button type="button" class="btn btn-info" onclick="window.location.href='/studentmanager/edit?id=${student.id}'">编辑</button>
+                    <td><button type="button" class="btn btn-danger" id="delete" onclick="window.location.href='${path}/studentmanager/delete?id=${student.id}'">删除</button>
+                        <button type="button" class="btn btn-info" onclick="window.location.href='${path}/studentmanager/edit?id=${student.id}'">编辑</button>
                     </td>
                 </tr>
             </c:forEach>

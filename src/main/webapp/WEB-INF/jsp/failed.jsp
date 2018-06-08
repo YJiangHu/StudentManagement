@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-   <h2 align="center">添加失败！学号重复</h2>
-    <p align="center"><a href="/studentmanager/list">返回列表</a> </p>
+   <h2 align="center">输入格式有误！</h2>
+    <p align="center"><a href="${path}/studentmanager/list">返回列表</a> </p>
 </body>
 </html>

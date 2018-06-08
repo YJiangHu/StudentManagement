@@ -1,6 +1,7 @@
 package com.manager.service.impl;
 
 import com.manager.dao.StudentDetailMapper;
+import com.manager.domain.Course;
 import com.manager.domain.SC;
 import com.manager.service.StudentDetailService;
 import com.manager.vo.StudentGrade;
@@ -38,5 +39,10 @@ public class StudentDetailServiceImpl implements StudentDetailService {
     @Override
     public int insertDetail(SC sc) {
         return studentDetailMapper.insertDetail(sc);
+    }
+
+    @Override
+    public List<Course> getCourseList() {
+        return studentDetailMapper.getCourseList();
     }
 }

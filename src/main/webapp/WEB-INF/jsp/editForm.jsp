@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Huyuanjiang
@@ -24,13 +25,10 @@
     <h2>添加学生信息</h2>
     <br>
     <br>
-    <form class="form-inline" action="/studentmanager/editStudent" method="post">
+    <form class="form-inline" action="${path}/studentmanager/editStudent" method="post">
         <div class="form-group">
+            <!-- 隐藏域用于标识正在修改的学生学号-->
             <input type="hidden" name="id" value="${student.id}">
-            <%--<label for="inputId">学号：</label>--%>
-            <%--<input type="text" class="form-control" id="inputId" name="id"  value="${student.id}" disabled>--%>
-            <%--<br>--%>
-            <%--<br>--%>
             <label for="inputName">姓名：</label>
             <input type="text" class="form-control" id="inputName" name="name" value="${student.name}">
             <br>
@@ -52,8 +50,13 @@
             <br>
             <p align="center">
             <button type="submit" class="btn btn-success">提交</button>
-            &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='/studentmanager/list'">取消</button>
+            &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='${path}/studentmanager/list'">取消</button>
             </p>
+            <c:if test="${!empty errormsg}" >
+                <c:forEach items="${errormsg}" var="error">
+                    <p style="color: #ac2925">${error}</p>
+                </c:forEach>
+            </c:if>
         </div>
     </form>
 </div>
