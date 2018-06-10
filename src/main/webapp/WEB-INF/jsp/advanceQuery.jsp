@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Huyuanjiang
-  Date: 2018/5/30
-  Time: 14:52
+  Date: 2018/6/10
+  Time: 22:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +10,7 @@
 <html>
 <head>
     <%@ include file="head.jsp"%>
-    <title>增加信息</title>
+    <title>高级查询</title>
     <style>
         .col-center-block {
             float: none;
@@ -22,22 +22,26 @@
 </head>
 <body>
 <div class="col-xs-6 col-md-4 col-center-block">
-    <h2>添加选课信息</h2>
+    <h2>学生信息高级查询</h2>
     <br>
     <br>
-    <form class="form-inline" action="${path}/detail/insertDetail" method="post">
+    <form class="form-inline" action="${path}/studentmanager/queryStudent" method="post">
         <div class="form-group">
-            <input type="hidden" name="Sno" value="${sno}">
-            <label for="inputCourseName">课程名：</label>
-            <select class="form-control" name="Cno" id="inputCourseName">
-                <c:forEach items="${courselist}" var="courseitem">
-                    <option value="${courseitem.id}">${courseitem.name}</option>
+            <label for="inputId">学号：</label>
+            <input type="text" class="form-control" id="inputId" name="id" placeholder="请输入纯数字学号">
+            <br>
+            <br>
+            <label for="inputName">姓名：</label>
+            <input type="text" class="form-control" id="inputName" name="name">
+            <br>
+            <br>
+            <label for="inputClazz">性别：</label>
+            <select class="form-control" name="clazz" id="inputClazz">
+                <option> </option>
+                <c:forEach items="${clazzSet}" var="clazz">
+                    <option>${clazz}</option>
                 </c:forEach>
             </select>
-            <br>
-            <br>
-            <label for="inputGrade">成绩：</label>
-            <input type="text" class="form-control" id="inputGrade" name="Grade">
             <br>
             <br>
             <p align="center">
@@ -46,13 +50,10 @@
                     取消
                 </button>
             </p>
-            <c:if test="${!empty errormsg}">
-                <c:forEach items="${errormsg}" var="error">
-                    <p style="color: #ac2925">${error}</p>
-                </c:forEach>
+            <c:if test="${!empty msg}">
+                <p style="color: #ff1217">${msg}</p>
             </c:if>
         </div>
     </form>
-</div>
 </body>
 </html>

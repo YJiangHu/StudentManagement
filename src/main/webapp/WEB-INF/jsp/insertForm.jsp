@@ -59,7 +59,7 @@
             </label>--%>
             <p align="center">
                 <button type="submit" class="btn btn-success">提交</button>
-                <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/studentmanager/list'">
+                <button type="button" class="btn btn-primary" onclick="window.history.back(-1);">
                     取消
                 </button>
             </p>

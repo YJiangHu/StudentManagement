@@ -34,7 +34,7 @@
             <br>
             <p align="center">
                 <button type="submit" class="btn btn-success">提交</button>
-                &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/list'">取消</button>
+                &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.history.back(-1);">取消</button>
             </p>
         </div>
     </form>

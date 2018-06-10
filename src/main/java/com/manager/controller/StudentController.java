@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 学生个人信息Controller
@@ -88,6 +89,42 @@ public class StudentController {
         }
         // 转换成功，重定向到具体查询结果页面
         return "redirect:/detail/list?id=" + sno;
+    }
+
+    /**
+     * 先查询所有班级的信息，然后转发到高级查询表单页面
+     */
+    @RequestMapping("/query")
+    public String query(Model model) {
+        Set<String> clazzSet = studentService.getAllClazz();
+        model.addAttribute("clazzSet", clazzSet);
+        return "advanceQuery";
+    }
+    /**
+     * 通过页面输入的学号，姓名以及班级的不同组合查询学生信息
+     * @param id 学号，可以不输入
+     * @param name 姓名，可以不输入
+     * @param clazz 班级，可以不输入
+     */
+    @RequestMapping("/queryStudent")
+    public String query(@RequestParam(name = "id", required = false) String id,
+                        @RequestParam(name = "name", required = false) String name,
+                        @RequestParam(name = "clazz", required = false) String clazz, Model model) {
+        id = id.replaceAll(" ", "").replaceAll("//+", "");
+        Long sno = 0L;
+        if(id != "") {
+            try {
+                sno = Long.parseLong(id);
+            } catch (NumberFormatException e) {
+                model.addAttribute("msg", "学号输入有误！");
+                return "forward:query";
+            }
+        }
+        name = name.replaceAll(" ", "").replaceAll("//+", "");
+        clazz = clazz.replaceAll(" ", "").replaceAll("//+", "");
+        List<Student> list = studentService.getStudentByMulti(sno, name, clazz);
+        model.addAttribute("list", list);
+        return "queryResult";
     }
 
     /**

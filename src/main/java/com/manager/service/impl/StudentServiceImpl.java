@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -42,5 +43,15 @@ public class StudentServiceImpl implements StudentService {
 
     public List<Student> getStudentByName(String name) {
         return studentMapper.getStudentByName(name);
+    }
+
+    @Override
+    public List<Student> getStudentByMulti(Long id, String name, String clazz) {
+        return studentMapper.getStudentByMulti(id, name, clazz);
+    }
+
+    @Override
+    public Set<String> getAllClazz() {
+        return studentMapper.getAllClazz();
     }
 }

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface StudentMapper {
@@ -20,4 +21,8 @@ public interface StudentMapper {
     int updateStudent(@Param("student") Student student, @Param("id") long id);
     // 6. 按名字查询
     List<Student> getStudentByName(String name);
+    // 7. 高级查询
+    List<Student> getStudentByMulti(@Param("id") Long id, @Param("name") String name, @Param("clazz") String clazz);
+    // 8. 查询所有班级
+    Set<String> getAllClazz();
 }

@@ -11,11 +11,21 @@
     <context:component-scan base-package="com.manager.dao"/>
 
     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost:3306/manager"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="root"></property>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <!--c3p0私有属性-->
+        <property name="maxPoolSize" value="30"/>
+        <property name="minPoolSize" value="10"/>
+        <!--关闭连接后不自动commit-->
+        <property name="autoCommitOnClose" value="false"/>
+        <!--获取连接超时时间-->
+        <property name="checkoutTimeout" value="30000"/>
+        <!--当获取连接失败重试次数-->
+        <property name="acquireRetryAttempts" value="2"/>
     </bean>
 
     <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -29,10 +39,10 @@
         <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-           <property name="dataSource" ref="dataSource"/>
-    </bean>
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+           <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
 
-    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
 
 </beans>

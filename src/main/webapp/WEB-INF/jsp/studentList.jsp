@@ -35,7 +35,10 @@
                 <input type="text" class="form-control" id="queryid" name="id" placeholder="请输入纯数字学号">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
-            &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="window.location.href='${path}/studentmanager/insertForm'">添加</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/studentmanager/query'">高级查询</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success" onclick="window.location.href='${path}/studentmanager/insertForm'">添加</button>
         </form>
 
         <table class="table table-striped table table-hover table table-bordered">

@@ -8,11 +8,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Set;
 
 public class PageTest extends BaseTest {
 //
-//    @Autowired
-//    StudentMapper studentMapper;
+    @Autowired
+    StudentMapper studentMapper;
 //    @Autowired
 //    StudentDetailMapper studentDetailMapper;
 //    @Test
@@ -44,6 +45,25 @@ public class PageTest extends BaseTest {
     @Test
     public void test3() {
         System.out.println("hello");
+    }
+
+    @Test
+    public void test() {
+        Long id = 101L;
+        String name = null;
+        String clazz = null;
+        List<Student> list = studentMapper.getStudentByMulti(id, name, clazz);
+        for(Student student : list) {
+            System.out.println(student);
+        }
+    }
+
+    @Test
+    public void test4() {
+        Set<String> set = studentMapper.getAllClazz();
+        for(String s : set) {
+            System.out.print(s + " ");
+        }
     }
 //
 //    @Test

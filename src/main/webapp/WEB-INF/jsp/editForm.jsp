@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="col-xs-6 col-md-4 col-center-block">
-    <h2>添加学生信息</h2>
+    <h2>修改学生信息</h2>
     <br>
     <br>
     <form class="form-inline" action="${path}/studentmanager/editStudent" method="post">
@@ -50,7 +50,7 @@
             <br>
             <p align="center">
             <button type="submit" class="btn btn-success">提交</button>
-            &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='${path}/studentmanager/list'">取消</button>
+            &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.history.back(-1);">取消</button>
             </p>
             <c:if test="${!empty errormsg}" >
                 <c:forEach items="${errormsg}" var="error">

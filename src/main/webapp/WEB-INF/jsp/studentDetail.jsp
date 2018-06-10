@@ -24,6 +24,7 @@
     <br>
     <c:if test="${empty student}">
         <h3 style="color: #ac2925" align="center">没有此学生</h3>
+
     </c:if>
     <c:if test="${!empty student}">
     <div class="col-xs-6 col-md-6 col-center-block">
@@ -35,6 +36,7 @@
                 <th>性别</th>
                 <th>班级</th>
                 <th>电话</th>
+                <th>操作</th>
             </tr>
             <tr class="success">
                 <td>${student.id}</td>
@@ -42,6 +44,9 @@
                 <td>${student.sex}</td>
                 <td>${student.clazz}</td>
                 <td>${student.phone}</td>
+                <td><button type="button" class="btn btn-danger"  onclick="window.location.href='${path}/studentmanager/delete?id=${student.id}'">删除</button>
+                    <button type="button" class="btn btn-info" onclick="window.location.href='${path}/studentmanager/edit?id=${student.id}'">编辑</button>
+                </td>
             </tr>
         </table>
     </div>
@@ -58,7 +63,7 @@
                 <span class="glyphicon glyphicon-chevron-left">返回列表</span>
                 <span>-</span>
             </button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/insert?id=${student.id}'">添加</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/insert?id=${student.id}'">添加成绩信息</button>
             <table class="table table-striped table table-hover table table-bordered">
                 <tr>
                     <th>课程号</th>
@@ -92,6 +97,9 @@
             <button type="button" class="btn btn btn-success" onclick="window.location.href='${path}/studentmanager/list?id=${id}'">
                 <span class="glyphicon glyphicon-chevron-left">返回列表</span>
                 <span>-</span>
+            </button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='${path}/detail/insert?id=${student.id}'">
+                添加成绩信息
             </button>
         </div>
     </c:if>

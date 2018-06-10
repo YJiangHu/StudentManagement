@@ -59,4 +59,23 @@
     <select id="getStudentByName" resultMap="studentinfo">
         select * from student where Sname like contact("%", #{name}, "%")
     </select>
+
+    <select id="getStudentByMulti" resultMap="studentinfo">
+        select * from student
+        <where>
+            <if test="id != null and id != 0L">
+                and Sno = #{id}
+            </if>
+            <if test="name != null and name != ''">
+	            and Sname = #{name}
+            </if>
+	        <if test="clazz != null and clazz != ''">
+		        and Sclass = #{clazz}
+	        </if>
+        </where>
+    </select>
+
+	<select id="getAllClazz" resultType="string">
+		select Sclass from student
+	</select>
 </mapper>
