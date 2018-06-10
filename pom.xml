@@ -114,7 +114,12 @@
           <artifactId>pagehelper</artifactId>
           <version>5.1.2</version>
       </dependency>
-
+      <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+      <dependency>
+          <groupId>com.mchange</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>0.9.5.2</version>
+      </dependency>
 
       <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
       <dependency>
