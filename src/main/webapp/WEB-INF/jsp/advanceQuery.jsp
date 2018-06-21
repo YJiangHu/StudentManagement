@@ -35,7 +35,7 @@
             <input type="text" class="form-control" id="inputName" name="name">
             <br>
             <br>
-            <label for="inputClazz">性别：</label>
+            <label for="inputClazz">班级：</label>
             <select class="form-control" name="clazz" id="inputClazz">
                 <option> </option>
                 <c:forEach items="${clazzSet}" var="clazz">

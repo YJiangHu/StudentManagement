@@ -20,4 +20,6 @@ public interface StudentDetailService {
     int insertDetail(SC sc);
     // 6. 获取所有课程信息
     List<Course> getCourseList();
+    // 7. 获取指定学号学生没有选的课程
+    List<Course> getCourseListNotSelect(long sno);
 }

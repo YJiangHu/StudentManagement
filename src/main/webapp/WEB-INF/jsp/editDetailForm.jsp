@@ -28,6 +28,10 @@
         <div class="form-group">
             <input type="hidden" name="cno" value="${studentGrade.sc.cno}">
             <input type="hidden" name="sno" value="${studentGrade.sc.sno}">
+            <label for="inputName">课程名：</label>
+            <input class="form-control" id="inputName" type="text" placeholder="${studentGrade.course.name}" disabled>
+            <br>
+            <br>
             <label for="inputGrade">成绩：</label>
             <input type="text" class="form-control" id="inputGrade" name="grade"  value="${studentGrade.sc.grade}">
             <br>

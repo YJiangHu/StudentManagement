@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.manager.dao.StudentMapper">
-    <!--<resultMap id="getSC" type="student">
-        <id property="id" column="Sno"/>
-        <result property="name" column="Sname"/>
-        <result property="sex" column="Ssex"/>
-        <result property="clazz" column="Sclass"/>
-        <result property="phone" column="Sphone"/>
-        <collection property="courseList" ofType="course">
-            <id property="id" column="Cno"/>
-            <result property="name" column="Cname"/>
-            <result property="credit" column="Ccredit"/>
-        </collection>
-    </resultMap>-->
-   <!-- <select id="getSCInfo" parameterType="long" resultMap="getSC">
-        select s.*, c.*
-        from sc, course c, student s
-        where c.Cno = sc.Cno
-        and sc.Sno = s.Sno
-        and s.Sno = #{id};
-    </select>-->
 
     <resultMap id="studentinfo" type="student">
         <id property="id" column="Sno"/>
@@ -55,11 +36,13 @@
         set Sname=#{student.name},Ssex=#{student.sex},Sclass=#{student.clazz},Sphone=#{student.phone}
         where Sno=#{id}
     </update>
-    
+
+    <!-- 6. 根据学生姓名模糊查询学生信息 -->
     <select id="getStudentByName" resultMap="studentinfo">
-        select * from student where Sname like contact("%", #{name}, "%")
+        select * from student where Sname like concat("%", #{name}, "%")
     </select>
 
+    <!-- 7. 根据学生x学号、姓名以及班级的不同组合高级查询学生信息 -->
     <select id="getStudentByMulti" resultMap="studentinfo">
         select * from student
         <where>
@@ -67,7 +50,7 @@
                 and Sno = #{id}
             </if>
             <if test="name != null and name != ''">
-	            and Sname = #{name}
+	            and Sname like concat("%", #{name}, "%")
             </if>
 	        <if test="clazz != null and clazz != ''">
 		        and Sclass = #{clazz}
@@ -75,6 +58,7 @@
         </where>
     </select>
 
+    <!-- 7. 获取所有班级信息 -->
 	<select id="getAllClazz" resultType="string">
 		select Sclass from student
 	</select>

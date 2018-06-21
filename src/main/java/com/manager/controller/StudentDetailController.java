@@ -78,7 +78,7 @@ public class StudentDetailController {
      */
     @RequestMapping("/insert")
     public String insert(@RequestParam("id") long id, Model model) {
-        List<Course> courseList = studentDetailService.getCourseList();
+        List<Course> courseList = studentDetailService.getCourseListNotSelect(id);
         model.addAttribute("courselist", courseList);
         model.addAttribute("sno", id);
         return "insertDetailForm";
@@ -96,7 +96,6 @@ public class StudentDetailController {
             for (FieldError error : errorlist) {
                 String item = error.getField();
                 errormsg.add(item + " ： 输入格式有误");
-                System.out.println("error:" + item);
             }
             model.addAttribute("errormsg", errormsg);
             return "forward:insert?id=" + sc.getSno();

@@ -45,4 +45,9 @@ public class StudentDetailServiceImpl implements StudentDetailService {
     public List<Course> getCourseList() {
         return studentDetailMapper.getCourseList();
     }
+
+    @Override
+    public List<Course> getCourseListNotSelect(long sno) {
+        return studentDetailMapper.getCourseListNotSelect(sno);
+    }
 }

@@ -26,7 +26,7 @@
 <h2 align="center">查询结果</h2>
 <div class="col-xs-6 col-md-7 col-center-block">
     <br>
-    <button type="button" class="btn btn btn-success" onclick="window.location.href='/studentmanager/list'">
+    <button type="button" class="btn btn btn-success" onclick="window.location.href='${path}/studentmanager/list'">
         <span class="glyphicon glyphicon-chevron-left">返回列表</span>
         <span>-</span>
     </button>

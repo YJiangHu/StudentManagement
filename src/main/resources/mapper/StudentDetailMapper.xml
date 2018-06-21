@@ -57,4 +57,12 @@
     <select id="getCourseList" resultMap="getCourse">
         select * from course
     </select>
+
+    <!-- 7. 获取指定学号学生没有选的课程 -->
+    <select id="getCourseListNotSelect" resultMap="getCourse">
+        select course.*
+        from course left join sc
+        on course.Cno = sc.Cno and sc.Sno = #{sno}
+        where sc.Cno is null
+    </select>
 </mapper>

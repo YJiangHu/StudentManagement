@@ -3,6 +3,7 @@ package com.manager.domain;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Component
 public class SC {
@@ -11,7 +12,7 @@ public class SC {
 
     private long Cno;
 
-    @Min(0)
+    @Size(min = 0, max = 100)
     private float Grade;
 
     public long getSno() {
